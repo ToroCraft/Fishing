@@ -22,11 +22,11 @@ public class EventHooks {
 			
 			BiomeGenBase biome = event.getWorld().getBiomeGenForCoords(event.getPos());
 			if (isBiomeOfType(biome, Type.PLAINS)) {
-				dropWormWithOdds(event, 24);
+				dropWormWithOdds(event, 100);
 			} else if (isBiomeOfType(biome, Type.FOREST)) {
-				dropWormWithOdds(event, 12);
+				dropWormWithOdds(event, 50);
 			} else if (isBiomeOfType(biome, Type.JUNGLE)) {
-				dropWormWithOdds(event, 3);
+				dropWormWithOdds(event, 10);
 			}
 		}
 	}
@@ -46,14 +46,30 @@ public class EventHooks {
 			return;
 		}
 		
+		if (!isDay(getWorldTime(event))) {
+			maxOdds = doubleSpawnRate(maxOdds);
+		}
+		
 		if (event.getWorld().rand.nextInt(maxOdds) == 0) {
 			event.getDrops().add(newWorm(event));
 		}
 	}
 
+	private int doubleSpawnRate(int maxOdds) {		
+		return (int)(maxOdds * 0.5);
+	}
+
+	private long getWorldTime(HarvestDropsEvent event) {
+		return event.getWorld().getWorldTime();
+	}
+
+	private boolean isDay(long time) {
+		return time > 0 && time < 12000;
+	}
+
 	private ItemStack newWorm(HarvestDropsEvent event) {
 		ItemStack worm = new ItemStack(FishingMod.worms);
-		if (event.getWorld().rand.nextInt(100) == 0) {
+		if (event.getWorld().rand.nextInt(300) == 0) {
 			worm.addEnchantment(FishingMod.juicy, 1);
 		}
 		return worm;
