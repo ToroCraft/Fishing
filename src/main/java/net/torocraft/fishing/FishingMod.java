@@ -4,9 +4,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.enchantment.Enchantment.Rarity;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -47,8 +46,6 @@ public class FishingMod {
 		worms = new Worms();
 		GameRegistry.registerItem(worms, Worms.NAME);
 		
-		
-		
 		if(event.getSide() == Side.CLIENT){
 			RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 			renderItem.getItemModelMesher().register(worms, 0, new ModelResourceLocation(FishingMod.MODID + ":" + Worms.NAME, "inventory"));
@@ -57,7 +54,7 @@ public class FishingMod {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(worms, 0, wormsModel);
 		}
 		
-		Enchantment.enchantmentRegistry.register(300, new ResourceLocation(FishingMod.MODID + ":" + EnchantmentJuicy.NAME), juicy);
+		Enchantment.REGISTRY.register(300, new ResourceLocation(FishingMod.MODID + ":" + EnchantmentJuicy.NAME), juicy);
 	}
 	
 	@EventHandler

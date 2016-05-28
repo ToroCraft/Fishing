@@ -2,7 +2,7 @@ package net.torocraft.fishing.events;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -20,7 +20,7 @@ public class EventHooks {
 				return;
 			}
 			
-			BiomeGenBase biome = event.getWorld().getBiomeGenForCoords(event.getPos());
+			Biome biome = event.getWorld().getBiomeGenForCoords(event.getPos());
 			if (isBiomeOfType(biome, Type.PLAINS)) {
 				dropWormWithOdds(event, 100);
 			} else if (isBiomeOfType(biome, Type.FOREST)) {
@@ -35,7 +35,7 @@ public class EventHooks {
 	public void hookWormOnPole(PlayerEvent event) {
 	}
 	
-	private boolean isBiomeOfType(BiomeGenBase biome, Type type) {
+	private boolean isBiomeOfType(Biome biome, Type type) {
 		return BiomeDictionary.isBiomeOfType(biome, type);
 	}
 

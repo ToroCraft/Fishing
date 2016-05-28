@@ -1,14 +1,10 @@
 package net.torocraft.fishing.items;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -23,7 +19,7 @@ public class Worms extends ItemFood {
 	public static final boolean isWolfFood = false;
 
 	public Worms() {
-		this(64, CreativeTabs.tabMisc, NAME);
+		this(64, CreativeTabs.MISC, NAME);
 	}
 	
 	public Worms(int maxStackSize, CreativeTabs tab, String name) {
